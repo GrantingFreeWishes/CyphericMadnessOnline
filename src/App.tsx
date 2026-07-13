@@ -84,8 +84,6 @@ export default function App() {
     return Number(state.hm) + Number(state.sn) + Number(state.wl);
   }, [state.hm, state.sn, state.wl]);
 
-  const isPointsOver = false;
-
   // Sync current trackers to maximums on baseline resets
   useEffect(() => {
     if (state.currentThauma === null) {
@@ -872,10 +870,9 @@ export default function App() {
               </div>
             </div>
 
-            <div className={`mt-4 font-mono text-xs flex flex-col md:flex-row justify-between gap-2 bg-[#06070d]/40 px-4 py-3 border rounded border-panel-line ${isPointsOver ? "border-danger/50 text-danger" : "text-ink-dim"}`}>
+            <div className="mt-4 font-mono text-xs flex flex-col md:flex-row justify-between gap-2 bg-[#06070d]/40 px-4 py-3 border rounded border-panel-line text-ink-dim">
               <span>
-                Thaumagen Used: <b className={isPointsOver ? "text-danger" : "text-wl"}>{state.hm}/{hmTotal}</b> HM · <b className={isPointsOver ? "text-danger" : "text-wl"}>{state.sn}/{snTotal}</b> SN · <b className={isPointsOver ? "text-danger" : "text-wl"}>{state.wl}/{wlTotal}</b> WL 
-                {isPointsOver && <span className="ml-2 font-bold">(Exceeds Assigned Limits!)</span>}
+                Thaumagen Used: <b className="text-wl">{state.hm}/{hmTotal}</b> HM · <b className="text-wl">{state.sn}/{snTotal}</b> SN · <b className="text-wl">{state.wl}/{wlTotal}</b> WL 
               </span>
               <span>
                 Active Aspect: <b className="text-wl uppercase font-bold">{aspect}</b>
