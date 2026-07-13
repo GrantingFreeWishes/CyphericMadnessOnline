@@ -84,7 +84,7 @@ export default function App() {
     return Number(state.hm) + Number(state.sn) + Number(state.wl);
   }, [state.hm, state.sn, state.wl]);
 
-  const isPointsOver = usedPoints > tierData.statPoints;
+  const isPointsOver = false;
 
   // Sync current trackers to maximums on baseline resets
   useEffect(() => {
