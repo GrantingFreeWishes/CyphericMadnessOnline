@@ -959,6 +959,7 @@ export const ORIGINAL_HTML_TEMPLATE = `<!DOCTYPE html>
                     <div style="display:flex; gap:6px; margin-bottom:6px;">
                       <input type="text" class="mantle-mat-name" data-midx="\${mIdx}" data-matidx="\${matIdx}" placeholder="Matrix Name" value="\${mat.name||''}" style="flex:2;">
                       <input type="text" class="mantle-mat-tags" data-midx="\${mIdx}" data-matidx="\${matIdx}" placeholder="Tags" value="\${mat.tags||''}" style="flex:1;">
+                      <input type="text" class="mantle-mat-area" data-midx="\${mIdx}" data-matidx="\${matIdx}" placeholder="Area" value="\${mat.area||''}" style="flex:1;">
                       <input type="text" class="mantle-mat-aspect" data-midx="\${mIdx}" data-matidx="\${matIdx}" placeholder="Aspect" value="\${mat.aspect||''}" style="flex:1;">
                     </div>
                     <textarea class="mantle-mat-desc" data-midx="\${mIdx}" data-matidx="\${matIdx}" placeholder="Logic Chain / Rules...">\${mat.effect||''}</textarea>
@@ -1024,7 +1025,7 @@ export const ORIGINAL_HTML_TEMPLATE = `<!DOCTYPE html>
       } else if (type === 'mat') {
         const mat = mantle.matrices[idx];
         if (!mat) return '';
-        return \`<div class="mantle-popdown" style="border-left-color: var(--wl);"><strong>\${mat.name || 'Unnamed Matrix'}</strong><span style="font-size:11px; color:var(--ink-dim); margin-left:8px; font-family:'IBM Plex Mono';">Tags: [\${mat.tags||'None'}] | Aspect: \${mat.aspect||'None'}</span><p style="margin:6px 0 0; white-space: pre-wrap;">\${mat.effect || 'No rules parameters.'}</p></div>\`;
+        return \`<div class="mantle-popdown" style="border-left-color: var(--wl);"><strong>\${mat.name || 'Unnamed Matrix'}</strong><span style="font-size:11px; color:var(--ink-dim); margin-left:8px; font-family:'IBM Plex Mono';">Tags: [\${mat.tags||'None'}] | Area: \${mat.area||'None'} | Aspect: \${mat.aspect||'None'}</span><p style="margin:6px 0 0; white-space: pre-wrap;">\${mat.effect || 'No rules parameters.'}</p></div>\`;
       }
       return '';
     }
@@ -1219,7 +1220,7 @@ export const ORIGINAL_HTML_TEMPLATE = `<!DOCTYPE html>
         txt.oninput = e => { state.mantles[parseInt(txt.dataset.midx)].effects[parseInt(txt.dataset.eidx)].effect = e.target.value; };
       });
       document.querySelectorAll('.add-mantle-mat').forEach(btn => {
-        btn.onclick = () => { state.mantles[parseInt(btn.dataset.midx)].matrices.push({ name: '', tags: '', aspect: '', effect: '' }); render(); };
+        btn.onclick = () => { state.mantles[parseInt(btn.dataset.midx)].matrices.push({ name: '', tags: '', area: '', aspect: '', effect: '' }); render(); };
       });
       document.querySelectorAll('.delete-mantle-mat').forEach(btn => {
         btn.onclick = () => { state.mantles[parseInt(btn.dataset.midx)].matrices.splice(parseInt(btn.dataset.matidx), 1); render(); };
@@ -1229,6 +1230,9 @@ export const ORIGINAL_HTML_TEMPLATE = `<!DOCTYPE html>
       });
       document.querySelectorAll('.mantle-mat-tags').forEach(inp => {
         inp.oninput = e => { state.mantles[parseInt(inp.dataset.midx)].matrices[parseInt(inp.dataset.matidx)].tags = e.target.value; };
+      });
+      document.querySelectorAll('.mantle-mat-area').forEach(inp => {
+        inp.oninput = e => { state.mantles[parseInt(inp.dataset.midx)].matrices[parseInt(inp.dataset.matidx)].area = e.target.value; };
       });
       document.querySelectorAll('.mantle-mat-aspect').forEach(inp => {
         inp.oninput = e => { state.mantles[parseInt(inp.dataset.midx)].matrices[parseInt(inp.dataset.matidx)].aspect = e.target.value; };
