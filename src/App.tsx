@@ -373,7 +373,7 @@ export default function App() {
       const mantlesCopy = [...prev.mantles];
       mantlesCopy[mIndex] = {
         ...mantlesCopy[mIndex],
-        matrices: [...(mantlesCopy[mIndex].matrices || []), { name: "", tags: "", aspect: "", effect: "" }]
+        matrices: [...(mantlesCopy[mIndex].matrices || []), { name: "", tags: "", area: "", aspect: "", effect: "" }]
       };
       return { ...prev, mantles: mantlesCopy };
     });
@@ -1162,27 +1162,34 @@ export default function App() {
                         <div className="flex flex-col gap-2">
                           {(mantle.matrices || []).map((mat, matIdx) => (
                             <div key={matIdx} className="bg-void/40 border border-panel-line p-3 rounded flex flex-col gap-2 relative">
-                              <div className="grid grid-cols-3 gap-2">
+                              <div className="grid grid-cols-4 gap-2">
                                 <input 
                                   type="text" 
                                   placeholder="Matrix Name" 
                                   value={mat.name}
                                   onChange={(e) => handleUpdateMantleMatrix(mIdx, matIdx, "name", e.target.value)}
-                                  className="col-span-1.5 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink font-bold outline-none focus:border-wl"
+                                  className="col-span-1 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink font-bold outline-none focus:border-wl"
                                 />
                                 <input 
                                   type="text" 
                                   placeholder="Tags" 
                                   value={mat.tags || ""}
                                   onChange={(e) => handleUpdateMantleMatrix(mIdx, matIdx, "tags", e.target.value)}
-                                  className="col-span-0.75 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink outline-none focus:border-wl"
+                                  className="col-span-1 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink outline-none focus:border-wl"
+                                />
+                                <input 
+                                  type="text" 
+                                  placeholder="Area" 
+                                  value={mat.area || ""}
+                                  onChange={(e) => handleUpdateMantleMatrix(mIdx, matIdx, "area", e.target.value)}
+                                  className="col-span-1 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink outline-none focus:border-wl"
                                 />
                                 <input 
                                   type="text" 
                                   placeholder="Aspect" 
                                   value={mat.aspect || ""}
                                   onChange={(e) => handleUpdateMantleMatrix(mIdx, matIdx, "aspect", e.target.value)}
-                                  className="col-span-0.75 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink outline-none focus:border-wl"
+                                  className="col-span-1 bg-[#06070d]/50 border border-panel-line rounded px-2.5 py-1 text-xs text-ink outline-none focus:border-wl"
                                 />
                               </div>
                               <textarea 
@@ -1320,7 +1327,7 @@ export default function App() {
                                       <div className="flex flex-wrap items-center gap-x-2.5 mb-1.5">
                                         <div className="font-bold text-sm text-wl">{mat.name || "Unnamed Matrix"}</div>
                                         <div className="text-[10px] text-ink-dim font-mono tracking-wider bg-panel/40 border border-panel-line px-1.5 py-0.5 rounded">
-                                          Tags: [{mat.tags || "None"}] | Aspect: {mat.aspect || "None"}
+                                          Tags: [{mat.tags || "None"}] | Area: {mat.area || "None"} | Aspect: {mat.aspect || "None"}
                                         </div>
                                       </div>
                                       <p className="text-xs leading-relaxed text-ink/90 whitespace-pre-wrap">{mat.effect || "No rules parameters defined."}</p>
