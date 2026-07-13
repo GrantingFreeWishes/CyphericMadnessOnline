@@ -1,0 +1,6 @@
+{
+  "name": "Cypheric Madness",
+  "description": "Character sheet ledger, calculator, and runic rolls dice engine for the Cypheric Madness TTRPG system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
