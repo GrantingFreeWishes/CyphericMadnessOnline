@@ -666,7 +666,7 @@ export const ORIGINAL_HTML_TEMPLATE = `<!DOCTYPE html>
       
       const ability = calcAbility();
       const used = statPointsUsed();
-      const over = used > tier.statPoints;
+      const over = false;
       const aspect = getAspect();
 
       const matrixOver = state.matrices.length > 7;
