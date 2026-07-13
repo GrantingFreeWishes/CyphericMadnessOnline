@@ -33,6 +33,7 @@ export interface MantleEffect {
 export interface MantleMatrix {
   name: string;
   tags?: string;
+  area?: string;
   aspect?: string;
   effect: string;
 }
